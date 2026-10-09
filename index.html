@@ -4,14 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>polote.top API 文档</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+  
+  <!-- 基础主题（这里选用了更现代的暗黑/纯白风格，你可以将 dark.css 换成 vue.css 或 buble.css） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/dark.css">
+  
+  <!-- 代码高亮主题（这里选用了 Tomorrow Night，非常契合暗黑主题） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.css">
+  
   <style>
+    /* --- 自定义美化 CSS --- */
     :root {
-      --theme-color: #0366d6;
+      --theme-color: #42b983; /* 换个好看的主题色 */
     }
-    .sidebar { padding-top: 20px; }
-    .markdown-section table { display: table; width: 100%; }
-    .markdown-section pre { border-radius: 8px; }
+    /* 限制内容宽度，优化阅读体验 */
+    .markdown-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 40px;
+      line-height: 1.8;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    /* 美化表格 */
+    .markdown-section table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .markdown-section th, .markdown-section td {
+      padding: 12px 16px;
+      border: 1px solid #2c2c2c; /* 适配暗黑主题的边框 */
+    }
+    .markdown-section th {
+      background-color: #1a1a1a;
+      font-weight: 600;
+    }
+    /* 美化代码块 */
+    .markdown-section pre {
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin: 20px 0;
+      position: relative;
+    }
+    /* 复制按钮位置微调 */
+    .docsify-copy-code-button {
+      background-color: #42b983 !important;
+      border-radius: 4px !important;
+      color: #fff !important;
+    }
+    /* 侧边栏美化 */
+    .sidebar {
+      background-color: #0d1117; /* 深色侧边栏 */
+      padding-top: 20px;
+    }
+    .sidebar ul li a {
+      color: #c9d1d9;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .sidebar ul li a:hover, .sidebar ul li.active a {
+      color: #42b983;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -20,12 +77,23 @@
     window.$docsify = {
       name: 'polote.top API 文档',
       repo: 'helloningda/polote-docs',
+      // homepage 删掉，默认使用 README.md
       loadSidebar: true,
       subMaxLevel: 3,
+      // 开启右侧目录
+      maxLevel: 4,
+      // 开启分页导航（上一页/下一页）
+      pagination: {
+        previousText: '上一章节',
+        nextText: '下一章节',
+        crossChapter: true,
+      },
+      // 全文搜索
       search: {
         placeholder: '搜索文档...',
         noData: '找不到结果',
       },
+      // 一键复制代码
       copyCode: {
         buttonText: '复制',
         errorText: '复制失败',
@@ -33,9 +101,16 @@
       },
     };
   </script>
+  
+  <!-- 核心库 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <!-- 搜索插件 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <!-- 复制代码插件 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/copy-code.min.js"></script>
+  <!-- 分页导航插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/pagination.min.js"></script>
+  <!-- Prism 语言支持 -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
